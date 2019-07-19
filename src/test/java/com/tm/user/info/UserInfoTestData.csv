@@ -1,0 +1,2 @@
+TestObject.testCaseId,TestObject.TestTitle,TestObject.testSteps,User.firstName,User.middleInitial,User.lastName,User.email,User.password,User.challengeQuestion,User.challengeResponse,User.telephone,User.fax,User.address1,User.address2,User.city,User.state,User.postalCode,User.country
+1,registerUser,Register User,Santosh,Mr,Bandage,santosh.cbandage@gmail.com,Bandage@123,City of Birth,Gulbarga,9066812182,,Shantipura,Electronic city,Bangalore,Karnataka,560100,India

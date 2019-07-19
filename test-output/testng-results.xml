@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default Suite" duration-ms="41461" started-at="2019-07-19T10:07:57Z" finished-at="2019-07-19T10:08:39Z">
+    <groups>
+      <group name="registerUser">
+        <method signature="RegisterUserTest.registerUser(com.tm.user.info.TestObject, com.tm.user.info.User)[pri:0, instance:com.tm.user.info.RegisterUserTest@6fc6f14e]" name="registerUser" class="com.tm.user.info.RegisterUserTest"/>
+      </group> <!-- registerUser -->
+    </groups>
+    <test name="user-input" duration-ms="41461" started-at="2019-07-19T10:07:57Z" finished-at="2019-07-19T10:08:39Z">
+      <class name="com.tm.user.info.RegisterUserTest">
+        <test-method status="PASS" signature="registerUser(com.tm.user.info.TestObject, com.tm.user.info.User)[pri:0, instance:com.tm.user.info.RegisterUserTest@6fc6f14e]" name="registerUser" duration-ms="41376" started-at="2019-07-19T10:07:57Z" data-provider="UserInfo" finished-at="2019-07-19T10:08:39Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestCaseId=1|TestTitle=registerUser]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[com.tm.user.info.User@ea1a8d5]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- registerUser -->
+      </class> <!-- com.tm.user.info.RegisterUserTest -->
+    </test> <!-- user-input -->
+  </suite> <!-- Default Suite -->
+</testng-results>
