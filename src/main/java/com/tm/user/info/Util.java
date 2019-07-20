@@ -64,6 +64,11 @@ public class Util {
         Select options = new Select(driver.findElement(locator));
         options.selectByVisibleText(visibleText);
     }
+
+    public static void selectDropDownByIndex(WebDriver driver, By locator, int index) {
+        Select options = new Select(driver.findElement(locator));
+        options.selectByIndex(index);
+    }
     /**
      * Click Element
      *
@@ -71,9 +76,13 @@ public class Util {
      * @param element
      */
     public void clickElement(WebDriver driver, By element) {
-        //waitUntil(driver,element);
         sleep(3);
         driver.findElement(element).click();
+    }
+
+    public String getText(WebDriver driver, By element) {
+        sleep(3);
+        return driver.findElement(element).getText();
     }
 
     /***

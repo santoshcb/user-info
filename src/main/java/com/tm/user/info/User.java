@@ -1,5 +1,7 @@
 package com.tm.user.info;
 
+import com.github.javafaker.Faker;
+
 public class User {
 
     private String firstName = "";
@@ -17,6 +19,78 @@ public class User {
     private String state = "";
     private String postalCode = "";
     private String country = "";
+    private String businessType = "";
+    private String geContact = "";
+    private String companyName = "";
+    private String supervisorName = "";
+    private String supervisorTitle = "";
+    private String supervisorPhone = "";
+    private String reasonForRequest = "";
+    private String department = "";
+
+    public String getBusinessType() {
+        return businessType;
+    }
+
+    public void setBusinessType(String businessType) {
+        this.businessType = businessType;
+    }
+
+    public String getGeContact() {
+        return geContact;
+    }
+
+    public void setGeContact(String geContact) {
+        this.geContact = geContact;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getSupervisorName() {
+        return supervisorName;
+    }
+
+    public void setSupervisorName(String supervisorName) {
+        this.supervisorName = supervisorName;
+    }
+
+    public String getSupervisorTitle() {
+        return supervisorTitle;
+    }
+
+    public void setSupervisorTitle(String supervisorTitle) {
+        this.supervisorTitle = supervisorTitle;
+    }
+
+    public String getSupervisorPhone() {
+        return supervisorPhone;
+    }
+
+    public void setSupervisorPhone(String supervisorPhone) {
+        this.supervisorPhone = supervisorPhone;
+    }
+
+    public String getReasonForRequest() {
+        return reasonForRequest;
+    }
+
+    public void setReasonForRequest(String reasonForRequest) {
+        this.reasonForRequest = reasonForRequest;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -136,6 +210,15 @@ public class User {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public static void main(String[] args) {
+        Faker faker = new Faker();
+
+        String name = faker.name();
+        String firstName = faker.name();
+
+        System.out.println("Name: "+name);
     }
 
 }
