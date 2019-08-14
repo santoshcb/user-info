@@ -3,11 +3,6 @@ package com.tm.user.info;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -16,7 +11,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-public class RegisterUserTest extends Util {
+public class CustomerWebCenterTest extends Util {
 
     private final static String DATAPROVIDER_NAME = "UserInfo";
     private final static String CSV_FILENAME = "UserInfoTestData.csv";
@@ -24,6 +19,7 @@ public class RegisterUserTest extends Util {
     UserPage page = new UserPage();
     WebDriver driver;
     Faker faker = new Faker();
+    TestUtil test = new TestUtil();
 
     @DataProvider(name = DATAPROVIDER_NAME)
     public static Iterator<Object[]> testDataFromCSV(Method method) {
@@ -34,7 +30,7 @@ public class RegisterUserTest extends Util {
             methodFilter.put(TestObject.TEST_TITLE, method.getName());
             entityClazzMap.put("TestObject", TestObject.class);
             entityClazzMap.put("User", User.class);
-            objectsFromCsv = CsvUtil.getObjectsFromCsv(RegisterUserTest.class, entityClazzMap, "./src/test/java/com/tm/user/info/" + CSV_FILENAME, null,
+            objectsFromCsv = CsvUtil.getObjectsFromCsv(CustomerWebCenterTest.class, entityClazzMap, "./src/test/java/com/tm/user/info/" + CSV_FILENAME, null,
                     methodFilter);
 
         } catch (Exception e) {
@@ -114,27 +110,38 @@ public class RegisterUserTest extends Util {
     @Test(groups = {"searchParts"}, dataProvider = DATAPROVIDER_NAME)
     public void searchParts(TestObject testObject, User user) {
 
-        System.setProperty("webdriver.chrome.driver", CHROME_PATH);
-        WebDriver driver = new ChromeDriver();
-        driver.get(Util.getProperty("URL"));
-        driver.manage().window().maximize();
-        sleep(5);
-
-        enterText(driver, page.userName, Util.getProperty("USER"));
-        enterText(driver, page.password, Util.getProperty("PASSWORD"));
-        clickElement(driver, page.login);
-        driver.get("https://stage.customer.getransportation.com/cwcportal/web/cwcportal/search");
-        sleep(10);
+        driver = test.navigateToSearchPage();
         enterText(driver, page.searchPartsTextBox, testObject.getTestData());
         sleep(5);
         clickElement(driver, page.searchPartsTextBox);
 
         clickElement(driver, page.search);
         sleep(5);
-//        JavascriptExecutor js = (JavascriptExecutor) driver;
-//        js.executeScript("window.scrollBy(0,1000)");
-//        sleep(3);
-//        Assert.assertEquals(getText(driver, page.searchedResult), testObject.getTestData(), "Search failed!!");
+        driver.close();
+    }
+
+    @Test(groups = {"partialNameSearch"}, dataProvider = DATAPROVIDER_NAME)
+    public void partialNameSearch(TestObject testObject, User user) {
+
+        driver = test.navigateToSearchPage();
+        clickElement(driver, page.partialNameSearch);
+        enterText(driver, page.partialNameSearch, testObject.getTestData());
+        clickElement(driver, page.partialNameSearch);
+        clickElement(driver, page.partialSearchButton);
+        sleep(10);
+        driver.close();
+    }
+
+    @Test(groups = {"uploadFileAndSearch"}, dataProvider = DATAPROVIDER_NAME)
+    public void uploadFileAndSearch(TestObject testObject, User user) {
+
+        driver = test.navigateToSearchPage();
+        clickElement(driver, page.uploadTextBox);
+        clickElement(driver, page.ok);
+        sleep(5);
+        enterText(driver, page.browse, testObject.getTestData());
+        sleep(10);
+        clickElement(driver, page.upload);
         driver.close();
     }
 

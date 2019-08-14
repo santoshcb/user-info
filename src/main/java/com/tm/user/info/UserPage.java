@@ -48,6 +48,12 @@ public class UserPage {
     public By search = By.cssSelector("#exactSearchButton");
     public By searchedResult = By.id("search_geItem");
     public By searchPartsButton = By.linkText("Search Parts");
+    public By partialNameSearch = By.id("partialItemNum");
+    public By partialSearchButton = By.id("btn-partial-search");
+    public By uploadTextBox = By.id("dummyfile");
+    public By ok = By.linkText("OK");
+    public By browse = By.id("file");
+    public By upload = By.id("uploadBar");
 
 
 

@@ -1,3 +1,5 @@
 TestObject.testCaseId,TestObject.TestTitle,TestObject.testSteps,TestObject.testData,User.middleInitial,User.password,User.challengeQuestion,User.challengeResponse,User.telephone,User.fax,User.address1,User.address2,User.city,User.state,User.postalCode,User.country,User.businessType,User.geContact,User.companyName,User.supervisorName,User.supervisorTitle,User.supervisorPhone,User.reasonForRequest,User.department
-1,registerUser1,Register User,,Mr,Bandage@123A,City of Birth,Gulbarga,9844567654,,Shantipura,Electronic city,Bangalore,Karnataka,560100,India,Mining,9844567654,TechMahindra,TestUserName,Mr,9844567654,Test_Purpose,Mechanical
+1,registerUser,Register User,,Mr,Bandage@123A,City of Birth,Gulbarga,9844567654,,Shantipura,Electronic city,Bangalore,Karnataka,560100,India,Mining,9844567654,TechMahindra,TestUserName,Mr,9844567654,Test_Purpose,Mechanical
 2,searchParts,Search parts,41A306694P2,,,,,,,,,,,,,,,,,,,,
+3,partialNameSearch,Search parts with partial name,41A,,,,,,,,,,,,,,,,,,,,
+4,uploadFileAndSearch,Upload excel file and search,C:\\Users\\SX00551827\\Downloads\\user-info\\src\\test\\java\\com\\tm\\user\\info\\UserInfoTestData.csv,,,,,,,,,,,,,,,,,,,,
