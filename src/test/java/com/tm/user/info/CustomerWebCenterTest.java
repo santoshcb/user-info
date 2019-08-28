@@ -145,4 +145,65 @@ public class CustomerWebCenterTest extends Util {
         driver.close();
     }
 
+    @Test(groups = {"supportTickets"}, dataProvider = DATAPROVIDER_NAME)
+    public void supportTickets(TestObject testObject, User user) {
+
+        System.setProperty("webdriver.chrome.driver", CHROME_PATH);
+        WebDriver driver = new ChromeDriver();
+        driver.get(Util.getProperty("URL"));
+        driver.manage().window().maximize();
+        sleep(5);
+
+        enterText(driver, page.userName, Util.getProperty("USER"));
+        enterText(driver, page.password, Util.getProperty("PASSWORD"));
+        clickElement(driver, page.login);
+        clickElement(driver, page.myApplications);
+        clickElement(driver, page.launch);
+        for (String winHandle : driver.getWindowHandles()) {
+            driver.switchTo().window(winHandle);
+        }
+        sleep(20);
+        clickElement(driver, page.productType);
+        enterText(driver, page.productType, "p");
+        driver.findElement(page.productType).sendKeys(Keys.ENTER);
+        sleep(20);
+        clickElement(driver, page.createNewTicket);
+        sleep(20);
+        enterText(driver, page.headline, "PDS-New ticket for testing");
+        //selectAnyValueFromDropdown(driver, page.productClass);
+        selectAnyValueFromDropdown(driver, page.issueType);
+        selectAnyValueFromDropdown(driver, page.subIssueType);
+        selectAnyValueFromDropdown(driver, page.issueSource);
+        enterText(driver, page.headline, "Testing PDS new ticket");
+        enterText(driver, page.observerName, "Ganesh_Testing");
+        enterText(driver, page.observerPhone, "1234567890");
+        enterText(driver, page.observerEmail, "testing@gmail.com");
+        enterText(driver, page.systemVersion, "1");
+        clickElement(driver, page.dateIcon);
+        clickElement(driver, By.xpath("//td[contains(text(),'" + getYesterday() + "')]"));
+        selectAnyValueFromDropdown(driver, page.timeHour);
+        selectAnyValueFromDropdown(driver, page.timeMinute);
+        selectAnyValueFromDropdown(driver, page.am_pm);
+        clickElement(driver, page.timezone);
+        enterText(driver, page.timezone, "c");
+        driver.findElement(page.timezone).sendKeys(Keys.ENTER);
+        enterText(driver, page.tracableItem, "Testing");
+        clickElement(driver, page.division);
+        selectAnyValueFromDropdown(driver, page.priority);
+        selectAnyValueFromDropdown(driver, page.seveirity);
+        enterText(driver, page.steps, "Testing steps");
+        enterText(driver, page.notes, "Testing notes");
+
+        clickElement(driver, page.addAttachment);
+        sleep(10);
+        driver.switchTo().activeElement().sendKeys("D:\\sample.xlsx");
+        //enterText(driver, page.addAttachment, "D:\\sample.xlsx");
+        sleep(20);
+        driver.switchTo().activeElement().sendKeys(Keys.ENTER);
+        clickElement(driver, page.submit);
+        sleep(20);
+        driver.close();
+
+    }
+
 }

@@ -54,6 +54,34 @@ public class UserPage {
     public By ok = By.linkText("OK");
     public By browse = By.id("file");
     public By upload = By.id("uploadBar");
+    public By myApplications = By.linkText("My Applications");
+    public By launch = By.linkText("Launch");
+    public By productType = By.xpath("//select[@id='productTypeSelectBox']");
+    public By createNewTicket = By.id("createTicketModalBtn");
+    public By headline = By.xpath("//textarea[@id='cHeadline']");
+    public By productClass = By.xpath("//select[@id='cClass']");
+    public By issueType = By.xpath("//select[@id='cUitIssueType']");
+    public By subIssueType = By.xpath("//select[@id='cUitSubIssueType']");
+    public By issueSource = By.xpath("//select[@id='cUitIssueSource']");
+    public By issueDescription = By.xpath("//textarea[@id='cIssueDescription']");
+    public By observerName = By.xpath("//input[@id='cObserversName']");
+    public By observerPhone = By.xpath("//input[@id='cObserversPhone']");
+    public By observerEmail = By.xpath("//input[@id='cObserversEmail']");
+    public By systemVersion = By.xpath("//input[@id='cSystemVersion']");
+    public By dateIcon = By.xpath("//form[@id='createTicketForm']//i[@class='icon-calendar']");
+    public By date = By.xpath("//td[contains(text(),'27')]");
+    public By timeHour = By.xpath("//select[@id='cTimeProblem_HH']");
+    public By timeMinute = By.xpath("//select[@id='cTimeProblem_MM']");
+    public By am_pm = By.xpath("//select[@id='cTimeProblem_AAA']");
+    public By timezone = By.xpath("//select[@id='cTimeZone']");
+    public By tracableItem = By.xpath("//input[@id='cTraceableItemIdentifier']");
+    public By division = By.xpath("//option[contains(text(),'AL - 3B North')]");
+    public By priority = By.xpath("//select[@id='cPriority']");
+    public By seveirity = By.xpath("//select[@id='cSeverity']");
+    public By steps = By.xpath("//textarea[@id='cStepsToReproduceIssue']");
+    public By notes = By.xpath("//textarea[@id='cNotesToSubmitter']");
+    public By addAttachment = By.xpath("//button[@id='caddAttachment']");
+    public By createTicketButton = By.xpath("//button[@id='createTicketButton']");
 
 
 

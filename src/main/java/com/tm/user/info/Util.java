@@ -1,17 +1,16 @@
 package com.tm.user.info;
 
+import org.apache.commons.lang.time.DateUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class Util {
-
     /**
      * Get property value from properties file
      *
@@ -60,6 +59,7 @@ public class Util {
         driver.findElement(element).sendKeys(text);
 
     }
+
     public static void selectDropDownByName(WebDriver driver, By locator, String visibleText) {
         Select options = new Select(driver.findElement(locator));
         options.selectByVisibleText(visibleText);
@@ -69,6 +69,7 @@ public class Util {
         Select options = new Select(driver.findElement(locator));
         options.selectByIndex(index);
     }
+
     /**
      * Click Element
      *
@@ -200,5 +201,22 @@ public class Util {
 
     }
 
+    public static void selectAnyValueFromDropdown(WebDriver driver, By element) {
+        Util util = new Util();
+        util.clickElement(driver, element);
+        Util.sleep(3);
+        driver.findElement(element).sendKeys(Keys.ARROW_DOWN);
+        Util.sleep(3);
+        driver.findElement(element).sendKeys(Keys.ENTER);
+    }
+
+    public String getYesterday() {
+        Date date = DateUtils.addDays(new Date(), -1);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println(sdf.format(date));
+        String str = sdf.format(date);
+        String s[] = str.split("-");
+        return s[2];
+    }
 
 }
