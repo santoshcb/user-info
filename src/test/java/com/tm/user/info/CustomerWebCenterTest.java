@@ -3,6 +3,7 @@ package com.tm.user.info;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -145,65 +146,34 @@ public class CustomerWebCenterTest extends Util {
         driver.close();
     }
 
-    @Test(groups = {"supportTickets"}, dataProvider = DATAPROVIDER_NAME)
-    public void supportTickets(TestObject testObject, User user) {
+    @Test(groups = {"pdsTicket"}, dataProvider = DATAPROVIDER_NAME)
+    public void pdsTicket(TestObject testObject, User user) {
+        test.submitTicket("p");
+    }
 
-        System.setProperty("webdriver.chrome.driver", CHROME_PATH);
-        WebDriver driver = new ChromeDriver();
-        driver.get(Util.getProperty("URL"));
-        driver.manage().window().maximize();
-        sleep(5);
+    @Test(groups = {"movementPlanner_mp_Ticket"}, dataProvider = DATAPROVIDER_NAME)
+    public void movementPlanner_mp_Ticket(TestObject testObject, User user) {
+        test.submitTicket("m");
+    }
 
-        enterText(driver, page.userName, Util.getProperty("USER"));
-        enterText(driver, page.password, Util.getProperty("PASSWORD"));
-        clickElement(driver, page.login);
-        clickElement(driver, page.myApplications);
-        clickElement(driver, page.launch);
-        for (String winHandle : driver.getWindowHandles()) {
-            driver.switchTo().window(winHandle);
-        }
-        sleep(20);
-        clickElement(driver, page.productType);
-        enterText(driver, page.productType, "p");
-        driver.findElement(page.productType).sendKeys(Keys.ENTER);
-        sleep(20);
-        clickElement(driver, page.createNewTicket);
-        sleep(20);
-        enterText(driver, page.headline, "PDS-New ticket for testing");
-        //selectAnyValueFromDropdown(driver, page.productClass);
-        selectAnyValueFromDropdown(driver, page.issueType);
-        selectAnyValueFromDropdown(driver, page.subIssueType);
-        selectAnyValueFromDropdown(driver, page.issueSource);
-        enterText(driver, page.headline, "Testing PDS new ticket");
-        enterText(driver, page.observerName, "Ganesh_Testing");
-        enterText(driver, page.observerPhone, "1234567890");
-        enterText(driver, page.observerEmail, "testing@gmail.com");
-        enterText(driver, page.systemVersion, "1");
-        clickElement(driver, page.dateIcon);
-        clickElement(driver, By.xpath("//td[contains(text(),'" + getYesterday() + "')]"));
-        selectAnyValueFromDropdown(driver, page.timeHour);
-        selectAnyValueFromDropdown(driver, page.timeMinute);
-        selectAnyValueFromDropdown(driver, page.am_pm);
-        clickElement(driver, page.timezone);
-        enterText(driver, page.timezone, "c");
-        driver.findElement(page.timezone).sendKeys(Keys.ENTER);
-        enterText(driver, page.tracableItem, "Testing");
-        clickElement(driver, page.division);
-        selectAnyValueFromDropdown(driver, page.priority);
-        selectAnyValueFromDropdown(driver, page.seveirity);
-        enterText(driver, page.steps, "Testing steps");
-        enterText(driver, page.notes, "Testing notes");
+    @Test(groups = {"yardPlanner_Ticket"}, dataProvider = DATAPROVIDER_NAME)
+    public void yardPlanner_Ticket(TestObject testObject, User user) {
+        test.submitTicket("y");
+    }
 
-        clickElement(driver, page.addAttachment);
-        sleep(10);
-        driver.switchTo().activeElement().sendKeys("D:\\sample.xlsx");
-        //enterText(driver, page.addAttachment, "D:\\sample.xlsx");
-        sleep(20);
-        driver.switchTo().activeElement().sendKeys(Keys.ENTER);
-        clickElement(driver, page.submit);
-        sleep(20);
-        driver.close();
+    @Test(groups = {"ptc_Ticket"}, dataProvider = DATAPROVIDER_NAME)
+    public void ptc_Ticket(TestObject testObject, User user) {
+        test.submitTicket("ptc");
+    }
 
+    @Test(groups = {"sat_Ticket"}, dataProvider = DATAPROVIDER_NAME)
+    public void sat_Ticket(TestObject testObject, User user) {
+        test.submitSAT_Ticket();
+    }
+
+    @Test(groups = {"samp_Ticket"}, dataProvider = DATAPROVIDER_NAME)
+    public void samp_Ticket(TestObject testObject, User user) {
+        test.submit_SAMP_Ticket();
     }
 
 }

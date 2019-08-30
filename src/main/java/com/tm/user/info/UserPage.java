@@ -63,7 +63,7 @@ public class UserPage {
     public By issueType = By.xpath("//select[@id='cUitIssueType']");
     public By subIssueType = By.xpath("//select[@id='cUitSubIssueType']");
     public By issueSource = By.xpath("//select[@id='cUitIssueSource']");
-    public By issueDescription = By.xpath("//textarea[@id='cIssueDescription']");
+    public By issueDescription = By.id("cIssueDescription");
     public By observerName = By.xpath("//input[@id='cObserversName']");
     public By observerPhone = By.xpath("//input[@id='cObserversPhone']");
     public By observerEmail = By.xpath("//input[@id='cObserversEmail']");
@@ -82,6 +82,18 @@ public class UserPage {
     public By notes = By.xpath("//textarea[@id='cNotesToSubmitter']");
     public By addAttachment = By.xpath("//button[@id='caddAttachment']");
     public By createTicketButton = By.xpath("//button[@id='createTicketButton']");
+    public By yardCategory = By.id("cYardCategory");
+    public By yardName = By.id("cYardName");
+    public By nextToWork = By.id("cNexttoWork");
+    public By affectedPage = By.id("cAffectedPage");
+    public By additionalNotes = By.id("cAdditionalNotes");
+    public By comments = By.id("cComments");
+    public By customerName = By.xpath("//div[@class='span12 compname mobile-compname']");
+    public By changeUserDrop = By.xpath("//span[@class='user-name']");
+    public By switchCust = By.xpath("//a[contains(text(),'Switch Customer')]");
+    public By switchC = By.xpath("//select[@id='switchProfile']");
+    public By changeCustomer = By.id("changeCustomer");
+    public By assignedOrg = By.id("cAssignedOrganization");
 
 
 
